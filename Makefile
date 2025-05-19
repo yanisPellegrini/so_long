@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lx11 -lm
 RM = rm -f
 
-SRCS = so_long.c utilitaries.c
+SRCS = so_long.c utilitaries.c map.c map_parser.c main.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft

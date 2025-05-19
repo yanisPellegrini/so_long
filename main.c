@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilitaries.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 11:59:20 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/19 15:15:45 by ypellegr         ###   ########.fr       */
+/*   Created: 2025/05/19 14:02:00 by ypellegr          #+#    #+#             */
+/*   Updated: 2025/05/19 14:24:08 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_tab(char **tab)
+int main(int argc, char **argv)
 {
-	int	i;
+	t_map map;
 
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-}
-
-int ft_strcmp(const char *s1, const char *s2)
-{
-	while (*s1 && *s2 && *s1 == *s2)
+	if (argc != 2)
 	{
-		s1++;
-		s2++;
+		ft_putstr_fd("Usage: ./so_long <map_file.ber>\n", 2);
+		return (-1);
 	}
-	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	if (map_exe(argv[1], &map) < 0)
+		return (-1);
+	if (check_map(&map) < 0)
+	{
+		free_tab(map.map);
+		return (-1);
+	}
+	free_tab(map.map);
+	return (0);
 }

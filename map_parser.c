@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:58:33 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/15 12:02:03 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:17:16 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,49 +32,107 @@ int open_map(char *filename)
 	return (fd);
 }
 
-int read_map(int fd, char **map)
+int check_map_characters(char character, t_map *map)
 {
-	int i;
-	char *line;
-
-	i = 0;
-	while (1)
+	if (character == 'P')
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break;
-		map[i] = line;
-		i++;
+		map->player_nb++;
 	}
-	map[i] = NULL;
-	if (close(fd) < 0)
+	else if (character == 'E')
 	{
-		perror("Error closing file");
+		map->exit_nb++;
+	}
+	else if (character == 'C')
+	{
+		map->collectible_nb++;
+	}
+	return (0);
+}
+
+int check_map_validity(t_map *map)
+{
+	if (map->player_nb != 1)
+	{
+		ft_putstr_fd("Error: Invalid number of players\n", 2);
 		return (-1);
 	}
+	if (map->exit_nb != 1)
+	{
+		ft_putstr_fd("Error: Invalid number of exits\n", 2);
+		return (-1);
+	}
+	if (map->collectible_nb < 1)
+	{
+		ft_putstr_fd("Error: Invalid number of collectibles\n", 2);
+		return (-1);
+	}
+	return (0);
+}
+
+int is_rectangular(t_map *map_info)
+{
+	int i;
+	long unsigned int len;
+
+	len = ft_strlen(map_info->map[0]);
+	i = 1;
+	while (map_info->map[i])
+	{
+		if (ft_strlen(map_info->map[i]) != len)
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
+int are_borders_walls(t_map *map_info)
+{
+	int i;
+	int j;
+	int width;
+	int height;
+
+	height = 0;
+	while (map_info->map[height])
+		height++;
+	width = ft_strlen(map_info->map[0]);
+	for (j = 0; j < width; j++)
+	{
+		if (map_info->map[0][j] != '1' || map_info->map[height - 1][j] != '1')
+			return (-1);
+	}
+	for (i = 0; i < height; i++)
+	{
+		if (map_info->map[i][0] != '1' || map_info->map[i][width - 1] != '1')
+			return (-1);
+	}
+
 	return (1);
 }
 
-int check_map(char **map)
+int check_map(t_map *map_info)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (map[i])
+	while (map_info->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (map_info->map[i][j])
 		{
-			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'C' &&
-				map[i][j] != 'E' && map[i][j] != 'P')
+			if (map_info->map[i][j] != '1' && map_info->map[i][j] != '0' &&
+				map_info->map[i][j] != 'C' && map_info->map[i][j] != 'E' &&
+				map_info->map[i][j] != 'P')
 			{
-				free_tab(map);
-				return (0);
+				ft_putstr_fd("Error: Invalid character in map\n", 2);
+				free_tab(map_info->map);
+				return (-1);
 			}
+			check_map_characters(map_info->map[i][j], map_info);
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (check_map_validity(map_info));
 }
