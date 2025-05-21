@@ -6,16 +6,16 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:58:33 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/19 15:17:16 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:26:51 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int open_map(char *filename)
+//map is rectangular
+int	open_map(char *filename)
 {
-	int fd;
-	char *extension;
+	int		fd;
+	char	*extension;
 
 	extension = ft_strrchr(filename, '.');
 	if (!extension || ft_strcmp(extension, ".ber") != 0)
@@ -32,7 +32,7 @@ int open_map(char *filename)
 	return (fd);
 }
 
-int check_map_characters(char character, t_map *map)
+int	check_map_characters(char character, t_map *map)
 {
 	if (character == 'P')
 	{
@@ -49,7 +49,7 @@ int check_map_characters(char character, t_map *map)
 	return (0);
 }
 
-int check_map_validity(t_map *map)
+int	check_map_validity(t_map *map)
 {
 	if (map->player_nb != 1)
 	{
@@ -66,31 +66,17 @@ int check_map_validity(t_map *map)
 		ft_putstr_fd("Error: Invalid number of collectibles\n", 2);
 		return (-1);
 	}
+	if (error_map(map) < 0)
+		return (-1);
 	return (0);
 }
 
-int is_rectangular(t_map *map_info)
+int	are_borders_walls(t_map *map_info)
 {
-	int i;
-	long unsigned int len;
-
-	len = ft_strlen(map_info->map[0]);
-	i = 1;
-	while (map_info->map[i])
-	{
-		if (ft_strlen(map_info->map[i]) != len)
-			return (-1);
-		i++;
-	}
-	return (0);
-}
-
-int are_borders_walls(t_map *map_info)
-{
-	int i;
-	int j;
-	int width;
-	int height;
+	int	i;
+	int	j;
+	int	width;
+	int	height;
 
 	height = 0;
 	while (map_info->map[height])
@@ -106,14 +92,13 @@ int are_borders_walls(t_map *map_info)
 		if (map_info->map[i][0] != '1' || map_info->map[i][width - 1] != '1')
 			return (-1);
 	}
-
 	return (1);
 }
 
-int check_map(t_map *map_info)
+int	check_map(t_map *map_info)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map_info->map[i])
@@ -121,9 +106,9 @@ int check_map(t_map *map_info)
 		j = 0;
 		while (map_info->map[i][j])
 		{
-			if (map_info->map[i][j] != '1' && map_info->map[i][j] != '0' &&
-				map_info->map[i][j] != 'C' && map_info->map[i][j] != 'E' &&
-				map_info->map[i][j] != 'P')
+			if (map_info->map[i][j] != '1' && map_info->map[i][j] != '0'
+				&& map_info->map[i][j] != 'C' && map_info->map[i][j] != 'E'
+				&& map_info->map[i][j] != 'P')
 			{
 				ft_putstr_fd("Error: Invalid character in map\n", 2);
 				free_tab(map_info->map);

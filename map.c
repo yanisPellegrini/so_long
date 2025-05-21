@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:49:50 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/19 14:24:08 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/05/21 11:33:49 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ int check_map_size(t_map *map)
 
 int error_map(t_map *map)
 {
-	if (!is_rectangular(map))
-	{
-		ft_putstr_fd("Error: Map is not rectangular\n", 2);
-		free_tab(map->map);
-		return (-1);
-	}
 	if (!are_borders_walls(map))
 	{
 		ft_putstr_fd("Error: Map borders are not surrounded by walls\n", 2);
+		free_tab(map->map);
+		return (-1);
+	}
+	if (find_path(map) < 0)
+	{
+		ft_putstr_fd("Error: Invalid map size\n", 2);
 		free_tab(map->map);
 		return (-1);
 	}

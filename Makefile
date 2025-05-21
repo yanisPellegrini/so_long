@@ -3,10 +3,10 @@ NAME = so_long
 MLX_DIR = minilibx-linux
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lx11 -lm
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib/x86_64-linux-gnu -lXext -lX11 -lm
 RM = rm -f
 
-SRCS = so_long.c utilitaries.c map.c map_parser.c main.c
+SRCS = so_long.c utilitaries.c map.c map_parser.c main.c find_path.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft
