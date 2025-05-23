@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:02:00 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/19 14:24:08 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/05/23 10:44:32 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main(int argc, char **argv)
 {
 	t_map map;
 
+	map.map = NULL;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Usage: ./so_long <map_file.ber>\n", 2);

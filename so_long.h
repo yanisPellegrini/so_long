@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 10:00:33 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/21 11:34:27 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:39:03 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ typedef struct s_map
 	int		player_y;
 }			t_map;
 
-int			flood_fill(char **map, int x, int y);
+int			flood_fill(char **map, int x, int y, int height);
 int			find_path(t_map *map);
 void		player_position(t_map *map);
 int			find_path(t_map *map);
-int			flood_fill(char **map, int x, int y);
 void		player_position(t_map *map);
 void		free_tab(char **tab);
 int			open_map(char *filename);

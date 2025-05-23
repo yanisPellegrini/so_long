@@ -6,12 +6,13 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 11:58:33 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/21 11:26:51 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/05/23 10:13:14 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-//map is rectangular
+
+// map is rectangular
 int	open_map(char *filename)
 {
 	int		fd;
@@ -51,6 +52,8 @@ int	check_map_characters(char character, t_map *map)
 
 int	check_map_validity(t_map *map)
 {
+	printf("ENDEBUG: player_nb=%d, exit_nb=%d, collectible_nb=%d\n",
+		map->player_nb, map->exit_nb, map->collectible_nb);
 	if (map->player_nb != 1)
 	{
 		ft_putstr_fd("Error: Invalid number of players\n", 2);
@@ -94,7 +97,6 @@ int	are_borders_walls(t_map *map_info)
 	}
 	return (1);
 }
-
 int	check_map(t_map *map_info)
 {
 	int	i;

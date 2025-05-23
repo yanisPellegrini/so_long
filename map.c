@@ -6,17 +6,17 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:49:50 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/21 11:33:49 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/05/23 10:38:48 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int check_map_size(t_map *map)
+int	check_map_size(t_map *map)
 {
-	int x;
-	int y;
-	long unsigned int old_x;
+	int					x;
+	int					y;
+	long unsigned int	old_x;
 
 	x = 0;
 	y = 0;
@@ -41,7 +41,7 @@ int check_map_size(t_map *map)
 	return (0);
 }
 
-int error_map(t_map *map)
+int	error_map(t_map *map)
 {
 	if (!are_borders_walls(map))
 	{
@@ -58,12 +58,19 @@ int error_map(t_map *map)
 	return (0);
 }
 
-int map_exe(char *filename, t_map *map)
+int	map_exe(char *filename, t_map *map)
 {
-	int fd;
-	int bytes_read;
-	char buffer[4096];
+	int		fd;
+	int		bytes_read;
+	char	buffer[4096];
 
+
+	map->player_nb = 0;
+	map->exit_nb = 0;
+	map->collectible_nb = 0;
+	printf("Debug: Initializing map_exe\n");
+	printf("Debug: player_nb=%d, exit_nb=%d, collectible_nb=%d\n",
+		map->player_nb, map->exit_nb, map->collectible_nb);
 	fd = open_map(filename);
 	if (fd < 0)
 		return (-1);
@@ -78,6 +85,7 @@ int map_exe(char *filename, t_map *map)
 	map->map = ft_split(buffer, '\n');
 	if (!map->map)
 	{
+		ft_putstr_fd("Error: Failed to split map\n", 2);
 		close(fd);
 		return (-1);
 	}
@@ -87,5 +95,7 @@ int map_exe(char *filename, t_map *map)
 		close(fd);
 		return (-1);
 	}
+	printf("Debug: player_nb=%d, exit_nb=%d, collectible_nb=%d\n",
+		map->player_nb, map->exit_nb, map->collectible_nb);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:35:11 by elandi            #+#    #+#             */
-/*   Updated: 2025/04/07 08:53:17 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/05/23 11:38:19 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-int				ft_strchr_index(const char *s, int c);
+int					ft_strchr_index(const char *s, int c);
+int					flood_fill(char **map, int x, int y, int height);
 char				*get_next_line(int fd);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t count, size_t size);
