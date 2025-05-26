@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:02:00 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/23 10:44:32 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/05/26 11:01:18 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ int main(int argc, char **argv)
 		free_tab(map.map);
 		return (-1);
 	}
+	ft_putstr_fd("Map is valid!\n", 1);
+	void *mlx;
+	void *win;
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, 800, 600, "So Long");
+	mlx_loop(mlx);
 	free_tab(map.map);
 	return (0);
 }

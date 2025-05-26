@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:49:50 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/23 10:38:48 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:34:16 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ int	error_map(t_map *map)
 		free_tab(map->map);
 		return (-1);
 	}
-	if (find_path(map) < 0)
-	{
-		ft_putstr_fd("Error: Invalid map size\n", 2);
-		free_tab(map->map);
-		return (-1);
-	}
+	// if (find_path(map) < 0)
+	// {
+	// 	ft_putstr_fd("Error: Invalid map size\n", 2);
+	// 	free_tab(map->map);
+	// 	return (-1);
+	// }
 	return (0);
 }
 

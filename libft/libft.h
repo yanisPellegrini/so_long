@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 10:35:11 by elandi            #+#    #+#             */
-/*   Updated: 2025/05/23 11:38:19 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/05/26 10:34:30 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
 typedef struct s_list
 {
 	void			*content;
