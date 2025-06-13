@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 11:49:50 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/26 09:34:16 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/06/13 10:37:46 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,6 @@ int	map_exe(char *filename, t_map *map)
 	int		bytes_read;
 	char	buffer[4096];
 
-
-	map->player_nb = 0;
-	map->exit_nb = 0;
-	map->collectible_nb = 0;
-	printf("Debug: Initializing map_exe\n");
-	printf("Debug: player_nb=%d, exit_nb=%d, collectible_nb=%d\n",
-		map->player_nb, map->exit_nb, map->collectible_nb);
 	fd = open_map(filename);
 	if (fd < 0)
 		return (-1);
@@ -95,7 +88,5 @@ int	map_exe(char *filename, t_map *map)
 		close(fd);
 		return (-1);
 	}
-	printf("Debug: player_nb=%d, exit_nb=%d, collectible_nb=%d\n",
-		map->player_nb, map->exit_nb, map->collectible_nb);
 	return (0);
 }

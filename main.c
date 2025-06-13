@@ -6,43 +6,41 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:02:00 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/05/27 13:30:51 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/06/13 15:16:27 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	start_game(t_map *map)
+void	map_initializer(t_map *map, char **av)
 {
-	void	*mlx;
-	void	*win;
-
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 800, 600, "So Long");
-	mlx_loop(mlx);
-	ft_putstr_fd("Starting the game...\n", 1);
-	return (0);
+	map->filename = av[1];
+	map->moves = 0;
+	map->e = 0;
+	map->c = 0;
+	map->p = 0;
+	map->y = 0;
+	map->player.y = 0;
+	map->player.x = 0;
+	map->exit = 0;
 }
 
 int	main(int argc, char **argv)
 {
 	t_map	map;
 
-	map.map = NULL;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Usage: ./so_long <map_file.ber>\n", 2);
 		return (-1);
 	}
-	if (map_exe(argv[1], &map) < 0)
-		return (-1);
-	if (check_map(&map) < 0)
-	{
-		free_tab(map.map);
-		return (-1);
-	}
-	ft_putstr_fd("Map is valid!\n", 1);
-	start_game(&map);
-	free_tab(map.map);
+	map_initializer(&map, argv);
+	map_checker(&map, argv[1]); // todo
+	map.mlx = mlx_init();
+	map.wnd = mlx_new_window(map.mlx,800 ,600, "So Long"); // map.x * 50, map.y * 50
+	file_to_image(&map);
+	draw_map(&map);
+	mlx_hook(map.wnd, 17, 0, ft_close, &map);
+	mlx_key_hook(map.wnd, key_hook, &map);
 	return (0);
 }
