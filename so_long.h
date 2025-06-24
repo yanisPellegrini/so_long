@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 10:00:33 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/06/23 12:51:12 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:59:45 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ typedef struct s_map
 
 }				t_map;
 
+
+int				handle_keypress(int keycode, t_map *map);
+void			find_player(t_map *map);
 int				ft_close(t_map *map);
 void			file_to_image(t_map *map);
 int				flood_fill(char **map, int x, int y, int height);
