@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:02:00 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/06/23 12:50:19 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:15:28 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int	main(int argc, char **argv)
 	draw_map(&map);
 	mlx_hook(map.wnd, 17, 0, ft_close, &map);
 	mlx_key_hook(map.wnd, handle_keypress, &map);
+	mlx_loop(map.mlx);
 	return (0);
 }

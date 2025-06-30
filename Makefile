@@ -6,7 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -L/usr/lib/x86_64-linux-gnu -lXext -lX11 -lm
 RM = rm -f
 
-SRCS = so_long.c utilitaries.c map.c map_parser.c main.c find_path.c
+SRCS = so_long.c hook.c draw.c move.c main.c utilitaries.c end.c
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft

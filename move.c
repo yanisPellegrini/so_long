@@ -6,13 +6,13 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 13:05:22 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/06/24 14:16:01 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/06/30 07:41:33 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void check_collectible(t_map *map, int x, int y, int time)
+void check_collectible(t_map *map, int x, int y)
 {
     if (map->array[y][x] == 'C')
     {

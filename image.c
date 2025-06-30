@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 12:17:15 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/06/13 13:37:22 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/06/30 07:27:00 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,36 @@ void	file_to_image(t_map *map)
 	int	a;
 
 	a = 50;
-	map->img.empty = mlx_xpm_file_to_image(map->mlx, "Resources/empty.xpm", &a,
+	map->img.empty = mlx_xpm_file_to_image(map->mlx, "sprites/ground.xpm", &a,
 			&a);
-	map->img.wall = mlx_xpm_file_to_image(map->mlx, "Resources/wall.xpm", &a,
+	map->img.wall = mlx_xpm_file_to_image(map->mlx, "sprites/wall.xpm", &a,
 			&a);
-	map->img.exit = mlx_xpm_file_to_image(map->mlx, "Resources/door.xpm", &a,
+	map->img.exit = mlx_xpm_file_to_image(map->mlx, "sprites/tempexit.xpm", &a,
 			&a);
 	map->img.collectible = mlx_xpm_file_to_image(map->mlx,
-			"Resources/Estrellita.xpm", &a, &a);
-	map->img.enemy = mlx_xpm_file_to_image(map->mlx, "Resources/enemy.xpm", &a,
-			&a);
+			"sprites/coin.xpm", &a, &a);
 	file_to_image_player(map);
 }
+
 void	file_to_image_player(t_map *map)
 {
 	int	a;
 
 	a = 50;
 	map->img.player_right1 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/right-1-40.xpm", &a, &a);
+			"sprites/right1.xpm", &a, &a);
 	map->img.player_right2 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/right-2-40.xpm", &a, &a);
+			"sprites/right2.xpm", &a, &a);
 	map->img.player_up1 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/up-1-40.xpm", &a, &a);
+			"sprites/up1.xpm", &a, &a);
 	map->img.player_up2 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/up-2-40.xpm", &a, &a);
+			"sprites/up2.xpm", &a, &a);
 	map->img.player_down1 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/down-1-40.xpm", &a, &a);
+			"sprites/dwn1.xpm", &a, &a);
 	map->img.player_down2 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/down-2-40.xpm", &a, &a);
+			"sprites/dwn2.xpm", &a, &a);
 	map->img.player_left1 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/left-1-40.xpm", &a, &a);
+			"sprites/left1.xpm", &a, &a);
 	map->img.player_left2 = mlx_xpm_file_to_image(map->mlx,
-			"Resources/left-2-40.xpm", &a, &a);
+			"sprites/left2.xpm", &a, &a);
 }

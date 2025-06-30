@@ -6,7 +6,7 @@
 /*   By: ypellegr <ypellegr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 13:47:41 by ypellegr          #+#    #+#             */
-/*   Updated: 2025/06/24 13:48:21 by ypellegr         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:01:34 by ypellegr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int	handle_keypress(int keycode, t_map *map)
 	find_player(map);
 	if (keycode == 53)
 	{
-		ft_putstr_fd("Exiting game...\n", 1);
-		exit(0); // need to do a function for this
+		ft_close(map);
 	}
 	else if (keycode == 13)
 		ft_putstr_fd("Move up\n", 1);
